@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BoVoyageJessyThomas.Models
 {
-    public class Destination
+    public class Destination : BaseModel
     {
         public string Continent { get; set; }
 
@@ -14,7 +14,6 @@ namespace BoVoyageJessyThomas.Models
         public string Region { get; set; }
 
         public string Description { get; set; }
-
 
     }
 }
