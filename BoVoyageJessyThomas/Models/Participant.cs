@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BoVoyageJessyThomas.Models
 {
-    public class Participants : Personne
+    public class Participant : Personne
     {
         public int NumeroUnique { get; set; }
 

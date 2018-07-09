@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace BoVoyageJessyThomas.Models
 {
-    public class Voyages : BaseModel
+    public class Voyage : BaseModel
     {
         public DateTime DateAller { get; set; }
 
@@ -14,6 +15,10 @@ namespace BoVoyageJessyThomas.Models
         public int PlacesDisponibles { get; set; }
 
         public decimal TarifToutCompris { get; set; }
+
+        [ForeignKey("IdDestination")]
+        public int IdDestination { get; set; }
+        public Destination Destination { get; set; }
 
     }
 }
