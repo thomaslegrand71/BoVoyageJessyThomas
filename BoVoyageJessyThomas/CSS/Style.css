@@ -1,2 +1,19 @@
 ﻿body {
+    background-image : url("images/pyramideLouvreOpaciteReduite.jpg");
+    background-attachment : fixed;
+    background-position : center;
+    
+}
+
+.navbar-text{
+    font-size : 25px;
+}
+
+.navbar-brand{
+    font-size : 25px;
+}
+
+.formulaire{
+    margin-left:2cm;
+    width:12cm;
 }

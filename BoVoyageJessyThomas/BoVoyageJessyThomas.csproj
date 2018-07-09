@@ -81,12 +81,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\images\pyramideLouvre.jpg" />
+    <Content Include="CSS\images\pyramideLouvreOpaciteReduite.jpg" />
     <Content Include="Global.asax" />
     <Content Include="CSS\style.css" />
     <Content Include="Html\Client.html" />
     <Content Include="Html\Destination.html" />
     <Content Include="Html\Index.html" />
     <Content Include="Html\Participant.html" />
+    <Content Include="Html\testCSS.html" />
     <Content Include="Html\Voyage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
