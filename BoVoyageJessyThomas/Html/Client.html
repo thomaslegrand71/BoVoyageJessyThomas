@@ -36,7 +36,7 @@
             </div>
         </nav>
     </header>
-
+    <div class="Post_Client"></div>
     <div class="formulaire">
         <h2>Création d'un profil client</h2>
         <div class="form-group">
@@ -51,7 +51,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label" for="exampleInputEmail">Nom</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputNom" placeholder="Saisir un nom...">
+                <input type="text" class="form-control" id="inputNom" placeholder="Saisir un nom..." required>
             </div>
         </div>
 
@@ -105,41 +105,41 @@
             </div>
         </div>
     </div>
-
+    
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     <script>
-            $(document).ready(function () {
+        $(document).ready(function () {
 
-                $("form").submit(function (ev) {
+            $("form").submit(function (ev) {
 
-                    let nouveauClient = {
-                        Civilite: $("#inputCivilite").val(),//Verifier si la valeur est enregistrée avec .val (cf checkbox)
-                        Nom: $("#inputNom").val(),
-                        Prenom: $("#inputPrenom").val(),
-                        Adresse: $("#inputAdresse").val(),
-                        Telephone: $("#inputTelephone").val(),
-                        DateDeNaissance: $("#inputDateDeNaissance").val(),
-                        Email: $("inputEmail").val()
-                    };
+                let nouveauClient = {
+                    Civilite: $("#inputCivilite").val(),//Verifier si la valeur est enregistrée avec .val (cf checkbox)
+                    Nom: $("#inputNom").val(),
+                    Prenom: $("#inputPrenom").val(),
+                    Adresse: $("#inputAdresse").val(),
+                    Telephone: $("#inputTelephone").val(),
+                    DateDeNaissance: $("#inputDateDeNaissance").val(),
+                    Email: $("inputEmail").val()
+                };
 
 
-                    $.ajax({
-                        url:,//TODO ajouter l'url
-                        method: 'POST',
-                        data: nouveauClient,
-                        success: function (data) {
-                            alert(`Client enregistré avec l'ID ${data.ID}`);
-                        }
+                $.ajax({
+                    url:,//TODO ajouter l'url
+                    method: 'POST',
+                    data: nouveauClient,
+                    success: function (data) {
+                        alert(`Client enregistré avec l'ID ${data.ID}`);
+                    }
 
-                    });
+                });
 
-                    ev.preventDefault();
-                })
+                ev.preventDefault();
             })
+        })
     </script>
 
 
