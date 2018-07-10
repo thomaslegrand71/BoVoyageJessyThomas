@@ -13,31 +13,92 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../Voyage/VoyagePost.html">Voyages <span class="sr-only">(current)</span></a>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Voyages
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="menuDeroulant"><a href="../Voyage/VoyagePost.html">Créer</a></li>
+                                <li class="menuDeroulant"><a href="../Voyage/VoyageGet.html">Lister</a></li>
+                                <li class="menuDeroulant"><a href="../Voyage/VoyagePut.html">Modifier</a></li>
+                                <li class="menuDeroulant"><a href="../Voyage/VoyageDelete.html">Supprimer</a></li>
+                            </ul>
+                        </div>
                     </li>
+                    <li class="nav-item active">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Destination
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="menuDeroulant"><a href="../Destination/DestinationPost.html">Créer</a></li>
+                                <li class="menuDeroulant"><a href="../Destination/DestinationGet.html">Lister</a></li>
+                                <li class="menuDeroulant"><a href="../Destination/DestinationPut.html">Modifier</a></li>
+                                <li class="menuDeroulant"><a href="../Destination//DestinationDelete.html">Supprimer</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Client
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="menuDeroulant"><a href="../Client/ClientPost.html">Créer</a></li>
+                                <li class="menuDeroulant"><a href="../Client/ClientGet.html">Lister</a></li>
+                                <li class="menuDeroulant"><a href="../Client/ClientPut.html">Modifier</a></li>
+                                <li class="menuDeroulant"><a href="../Client/ClientDelete.html">Supprimer</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Participant
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="menuDeroulant"><a href="../Participant/ParticipantPost.html">Créer</a></li>
+                                <li class="menuDeroulant"><a href="../Participant/ParticipantGet.html">Lister</a></li>
+                                <li class="menuDeroulant"><a href="../Participant/ParticipantPut.html">Modifier</a></li>
+                                <li class="menuDeroulant"><a href="../Participant/ParticipantDelete.html">Supprimer</a></li>
+                            </ul>
+                        </div>
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../Destination/DestinationPost.html">Destinations <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="ClientPost.html">Clients <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../Participant/ParticipantPost.html">Participants <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../Reservation/ReservationPost.html">Réservations <span class="sr-only">(current)</span></a>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Réservation
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="menuDeroulant"><a href="ReservationPost.html">Créer</a></li>
+                                <li class="menuDeroulant"><a href="ReservationGet.html">Lister</a></li>
+                                <li class="menuDeroulant"><a href="ReservationPut.html">Modifier</a></li>
+                                <li class="menuDeroulant"><a href="ReservationDelete.html">Supprimer</a></li>
+                            </ul>
+                        </div>
                     </li>
 
                 </ul>
                 <span class="navbar-text">
                     Bienvenue sur le site de BoVoyage
                 </span>
+
+
+
             </div>
         </nav>
+
     </header>
     <div class="row">
         <div class="formulaire">
@@ -86,14 +147,10 @@
                 </div>
             </form>
 
-            <div class="footer">
-                <div id="logoFB">
-                    <img src="images.logoFB.jpg" />
-                </div>
-            </div>
-
-            <p>
-                Mentions légales : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget luctus odio
-            </p>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                    crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>
