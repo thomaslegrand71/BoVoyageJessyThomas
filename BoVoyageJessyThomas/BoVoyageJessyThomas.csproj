@@ -93,6 +93,7 @@
     <Content Include="Html\Destination.html" />
     <Content Include="Html\Index.html" />
     <Content Include="Html\Participant.html" />
+    <Content Include="Html\Reservation.html" />
     <Content Include="Html\testCSS.html" />
     <Content Include="Html\Voyage.html" />
     <Content Include="Web.config" />
