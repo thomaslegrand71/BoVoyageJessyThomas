@@ -13,8 +13,10 @@ using BoVoyageJessyThomas.Models;
 
 namespace BoVoyageJessyThomas.Controllers
 {
+    [RoutePrefix("api/participants")]
     public class ParticipantsController : ApiController
     {
+
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
 
         // GET: api/Participants
@@ -23,6 +25,7 @@ namespace BoVoyageJessyThomas.Controllers
             return db.Participants;
         }
 
+        [Route("{id:int}")]
         // GET: api/Participants/5
         [ResponseType(typeof(Participant))]
         public IHttpActionResult GetParticipant(int id)
@@ -38,7 +41,7 @@ namespace BoVoyageJessyThomas.Controllers
 
         [Route("search")]
         [ResponseType(typeof(Participant))]
-        public IQueryable<Participant> GetSearch(string nom = "", string prenom = "", string adresse = "")
+        public IQueryable<Participant> GetSearch(string nom = "", string prenom = "")
         {
             var query = db.Participants.Where(x => !x.Deleted);
             if (!string.IsNullOrWhiteSpace(nom))
@@ -49,11 +52,6 @@ namespace BoVoyageJessyThomas.Controllers
             {
                 query = query.Where(x => x.Prenom.Contains(prenom));
             }
-            if (!string.IsNullOrWhiteSpace(adresse))
-            {
-                query = query.Where(x => x.Adresse.Contains(adresse));
-            }
-
             return query;
         }
 

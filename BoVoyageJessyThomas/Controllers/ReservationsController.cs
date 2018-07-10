@@ -13,6 +13,7 @@ using BoVoyageJessyThomas.Models;
 
 namespace BoVoyageJessyThomas.Controllers
 {
+    [RoutePrefix("api/reservations")]
     public class ReservationsController : ApiController
     {
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
@@ -20,9 +21,10 @@ namespace BoVoyageJessyThomas.Controllers
         // GET: api/Reservations
         public IQueryable<Reservation> GetReservations()
         {
-            return db.Reservations;
+            return db.Reservations.Include(x=>x.Voyage).Include(x=>x.Client).Where(x=>!x.Deleted);
         }
 
+        [Route("{id:int}")]
         // GET: api/Reservations/5
         [ResponseType(typeof(Reservation))]
         public IHttpActionResult GetReservation(int id)
@@ -40,7 +42,7 @@ namespace BoVoyageJessyThomas.Controllers
         [ResponseType(typeof(Reservation))]
         public IQueryable<Reservation> GetSearch(int? idVoyage = null, int? idClient = null)
         {
-            var query = db.Reservations.Where(x => !x.Deleted);
+            var query = db.Reservations.Include(x => x.Voyage).Include(x => x.Client).Where(x => !x.Deleted);
             if (idVoyage != null)
             {
                 query = query.Where(x => x.IDVoyage == idVoyage);
