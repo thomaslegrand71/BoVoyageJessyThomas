@@ -3,33 +3,34 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../../CSS/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="Index.html">Menu Principal</a>
+            <a class="navbar-brand" href="../Index.html">Menu Principal</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="Voyage.html">Voyages <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Destination.html">Destinations <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../Voyage/IndexVoyage.html">Voyages <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="Client.html">Clients <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../Destination/IndexDestination.html">Destinations <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="Participant.html">Participants <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../Client/IndexClient.html">Clients <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="Reservation.html">Réservations <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="IndexParticipant.html">Participants <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../Reservation/IndexReservation.html">Réservations <span class="sr-only">(current)</span></a>
                     </li>
 
                 </ul>
@@ -38,16 +39,16 @@
                 </span>
             </div>
         </nav>
-    </header>
 
+    </header>
     <div class="row">
         <div class="formulaire">
-            
+
 
 
             <bs-form-horizontal>
                 <form class="form-horizontal" role="form">
-                    <h2>Création d'un profil client</h2>
+                    <h2>Création d'un profil participant</h2>
                     <div class="form-group">
                         <label for="exampleFormControlSelect2">Civilité</label>
                         <select multiple class="form-control" id="inputCivilite">
@@ -92,21 +93,23 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="exampleInputEmail">Email</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Saisir un email...">
-                        </div>
-                    </div>
-
                     <fieldset disabled>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="exampleInputEmail">Réduction_appliquée</label>
+                            <label class="col-sm-2 control-label" for="exampleInputEmail">Email</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputReduction" placeholder="Saisir une réduction...">
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Saisir un email...">
                             </div>
                         </div>
                     </fieldset>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Réduction_appliquée</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputReduction" placeholder="Saisir une réduction...">
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
@@ -118,19 +121,6 @@
         </bs-form-horizontal>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
@@ -141,23 +131,23 @@
 
             $("form").submit(function (ev) {
 
-                let nouveauClient = {
+                let nouveauParticipant = {
                     Civilite: $("#inputCivilite").val(),//Verifier si la valeur est enregistrée avec .val (cf checkbox)
                     Nom: $("#inputNom").val(),
                     Prenom: $("#inputPrenom").val(),
                     Adresse: $("#inputAdresse").val(),
                     Telephone: $("#inputTelephone").val(),
                     DateDeNaissance: $("#inputDateDeNaissance").val(),
-                    Email: $("inputEmail").val()
+                    Reduction: $("inputReduction").val()
                 };
 
 
                 $.ajax({
                     url:,//TODO ajouter l'url
                     method: 'POST',
-                    data: nouveauClient,
+                    data: nouveauParticipant,
                     success: function (data) {
-                        alert(`Client enregistré avec l'ID ${data.ID}`);
+                        alert(`Participant enregistré avec l'ID ${data.ID}`);
                     }
 
                 });
