@@ -7,7 +7,7 @@ namespace BoVoyageJessyThomas.Models
 {
     public class Participant : Personne
     {
-        public int NumeroUnique { get; set; }
+        public int NumeroUnique { get; set; }//doublon avec ID de BaseModel
 
         public float Reduction { get; set; }
 
