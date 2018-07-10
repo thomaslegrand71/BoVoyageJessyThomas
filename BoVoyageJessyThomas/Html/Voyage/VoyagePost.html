@@ -107,16 +107,18 @@
 
 
             <form class="form-horizontal" role="form">
+
+
                 <div class="form-group">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Sélectionner un continent</label>
-                        <select multiple class="form-control" id="inputContinent">
-                            <option>Safari</option>
-                            <option>Paris et camembert</option>
-                            <option>La grande muraille de Chine</option>
-                            <option>La statue de la Liberté</option>
-                            <option>Surf et Dauphins</option>
-                        </select>
+                    <label class="col-sm-2 control-label" for="exampleInputEmail">Identifiant_Agence</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputAgence" placeholder="Saisir une Agence...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="exampleInputEmail">Identifiant_Voyage</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputVoyage" placeholder="Saisir un Voyage...">
                     </div>
                 </div>
                 <div class="form-group">
@@ -126,26 +128,60 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="exampleInputEmail">Date_Aller</label>
+                    <label class="col-sm-2 control-label" for="exampleInputEmail">Date_Retour</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" id="inputDateAller" placeholder="Saisir une date d'aller...">
+                        <input type="date" class="form-control" id="inputDateRetour" placeholder="Saisir une date de retour...">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
+                    <label class="col-sm-2 control-label" for="exampleInputEmail">Places_disponibles</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputPlacesDisponibles" placeholder="Saisir un nombre de places disponibles...">
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 control-label" for="exampleInputEmail">Tarif_Tout_Compris</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputTarif" placeholder="Saisir un tarif...">
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-default">Enregistrer</button>
                     </div>
                 </div>
             </form>
+
+            <script>
+                $(document).ready(function () {
+
+                    $("form").submit(function (ev) {
+
+                        let nouveauVoyage = {
+                            IdAgence: $("#inputAgence").val(),
+                            IdVoyage : $("#inputVoyage").val(),
+                            DateAller: $("#inputDateAller").val(),
+                            DateRetour: $("#inputDateRetour").val(),
+                            PlacesDisponibles: $("#inputPlacesDisponibles").val(),
+                            TarifToutCompris: $("#inputTarif").val()
+                        };
+
+
+                        $.ajax({
+                            url: `http://localhost:50002/api/Voyages`,
+                            method: 'POST',
+                            data: nouveauVoyage,
+                            success: function (data) {
+                                alert(`Voyage enregistré avec l'ID ${data.ID}`);
+                            }
+
+                        });
+
+                        ev.preventDefault();
+                    })
+                })
+            </script>
 
             <script src="https://code.jquery.com/jquery-3.3.1.min.js"
                     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
