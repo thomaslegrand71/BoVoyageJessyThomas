@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -19,6 +20,7 @@ namespace BoVoyageJessyThomas.Models
 
         public DateTime DateDeNaissance { get; set; }
 
-
+        [NotMapped]
+        public int Age { get; set; }
     }
 }

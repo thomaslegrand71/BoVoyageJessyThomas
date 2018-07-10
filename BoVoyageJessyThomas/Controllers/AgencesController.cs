@@ -35,6 +35,13 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(agence);
         }
+        [Route("{name}")]
+        [ResponseType(typeof(Agence))]
+        public IQueryable<Agence> Getagence(string nom)
+        {
+            return db.Agences.Where(x => !x.Deleted && x.Nom.Contains(nom));
+        }
+
 
         // PUT: api/Agences/5
         [ResponseType(typeof(void))]

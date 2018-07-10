@@ -13,16 +13,18 @@ using BoVoyageJessyThomas.Models;
 
 namespace BoVoyageJessyThomas.Controllers
 {
+    [RoutePrefix("api/voyages")]
     public class VoyagesController : ApiController
-    {
+    {    
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
 
         // GET: api/Voyages
         public IQueryable<Voyage> GetVoyages()
-        {
-            return db.Voyages;
+        {    
+            return db.Voyages.Include(x=>x.IDAgence).Include(x=>x.IDDestination).Where(x=>!x.Deleted);
         }
 
+        [Route("{id:int}")]
         // GET: api/Voyages/5
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult GetVoyage(int id)
@@ -34,6 +36,40 @@ namespace BoVoyageJessyThomas.Controllers
             }
 
             return Ok(voyage);
+        }
+
+        [Route("search")]
+        [ResponseType(typeof(Voyage))]
+        public IQueryable<Voyage> GetSearch(int? iddestination = null, int?idagence = null, DateTime?datealler=null, DateTime?dateretour=null, int?placesdisponibles= null, decimal?tariftoutcompris = null)
+        {
+
+            
+            var query = db.Voyages.Include(x=>x.IDAgence).Include(x=>x.IDDestination).Where(x => !x.Deleted);
+            if (iddestination!=null)
+            {
+                query = query.Where(x => x.IDDestination == iddestination);
+            }
+            if (idagence != null)
+            {
+                query = query.Where(x => x.IDAgence == idagence);
+            }
+            if (datealler != null)
+            {
+                query = query.Where(x => x.DateAller== datealler);
+            }
+            if (dateretour != null)
+            {
+                query = query.Where(x => x.DateRetour == dateretour);
+            }
+            if (placesdisponibles != null)
+            {
+                query = query.Where(x => x.PlacesDisponibles == placesdisponibles);
+            }
+            if (tariftoutcompris != null)
+            {
+                query = query.Where(x => x.TarifToutCompris == tariftoutcompris);
+            }
+            return query;
         }
 
         // PUT: api/Voyages/5
@@ -96,7 +132,9 @@ namespace BoVoyageJessyThomas.Controllers
                 return NotFound();
             }
 
-            db.Voyages.Remove(voyage);
+            voyage.Deleted = true;
+            voyage.DeletedAt = DateTime.Now;
+            db.Entry(voyage).State = EntityState.Modified;
             db.SaveChanges();
 
             return Ok(voyage);
