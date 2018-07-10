@@ -13,6 +13,7 @@ using BoVoyageJessyThomas.Models;
 
 namespace BoVoyageJessyThomas.Controllers
 {
+    [RoutePrefix("api/clients")]
     public class ClientsController : ApiController
     {
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
@@ -22,7 +23,7 @@ namespace BoVoyageJessyThomas.Controllers
         {
             return db.Clients;
         }
-
+        [Route("{id:int}")]
         // GET: api/Clients/5
         [ResponseType(typeof(Client))]
         public IHttpActionResult GetClient(int id)
@@ -35,6 +36,24 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(client);
         }
+
+        [Route("search")]
+        [ResponseType(typeof(Client))]
+        public IQueryable<Client> GetSearch(string nom = "", string prenom = "")
+        {
+            var query = db.Clients.Where(x => !x.Deleted);
+            if (!string.IsNullOrWhiteSpace(nom))
+            {
+                query = query.Where(x => x.Nom.Contains(nom));
+            }
+            if (!string.IsNullOrWhiteSpace(prenom))
+            {
+                query = query.Where(x => x.Prenom.Contains(prenom));
+            }
+
+            return query;
+        }
+
 
         // PUT: api/Clients/5
         [ResponseType(typeof(void))]
@@ -70,6 +89,8 @@ namespace BoVoyageJessyThomas.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+      
 
         // POST: api/Clients
         [ResponseType(typeof(Client))]
