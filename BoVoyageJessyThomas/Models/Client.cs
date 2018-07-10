@@ -7,6 +7,7 @@ namespace BoVoyageJessyThomas.Models
 {
     public class Client : Personne
     {
+
         public string Email { get; set; }
 
     }

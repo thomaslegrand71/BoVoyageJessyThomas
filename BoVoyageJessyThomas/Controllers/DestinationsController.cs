@@ -13,6 +13,7 @@ using BoVoyageJessyThomas.Models;
 
 namespace BoVoyageJessyThomas.Controllers
 {
+    [RoutePrefix("api/destinations")]
     public class DestinationsController : ApiController
     {
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
@@ -23,6 +24,7 @@ namespace BoVoyageJessyThomas.Controllers
             return db.Destinations;
         }
 
+        [Route("{id:int}")]
         // GET: api/Destinations/5
         [ResponseType(typeof(Destination))]
         public IHttpActionResult GetDestination(int id)
@@ -35,6 +37,29 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(destination);
         }
+        [Route("search")]
+        //Get : api/Destination/search
+    
+        [ResponseType(typeof(Destination))]
+        public IQueryable<Destination> GetSearch(string continent="", string pays ="", string region="")
+        {
+            var query = db.Destinations.Where(x => !x.Deleted);
+                if (!string.IsNullOrWhiteSpace(continent))
+            {
+                query = query.Where(x => x.Continent.Contains(continent));
+            }
+                if (!string.IsNullOrWhiteSpace(pays))
+            {
+                query = query.Where(x => x.Pays.Contains(pays));
+            }
+                if (!string.IsNullOrWhiteSpace(region))
+            {
+                query = query.Where(x => x.Region.Contains(region));
+            }
+
+            return query;
+        }
+
 
         // PUT: api/Destinations/5
         [ResponseType(typeof(void))]
@@ -96,7 +121,9 @@ namespace BoVoyageJessyThomas.Controllers
                 return NotFound();
             }
 
-            db.Destinations.Remove(destination);
+            destination.Deleted = true;
+            destination.DeletedAt = DateTime.Now;
+            db.Entry(destination).State = EntityState.Modified;
             db.SaveChanges();
 
             return Ok(destination);
