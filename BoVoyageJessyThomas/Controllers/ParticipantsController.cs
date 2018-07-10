@@ -115,7 +115,9 @@ namespace BoVoyageJessyThomas.Controllers
                 return NotFound();
             }
 
-            db.Participants.Remove(participant);
+            participant.Deleted = true;
+            participant.DeletedAt = DateTime.Now;
+            db.Entry(participant).State = EntityState.Modified;
             db.SaveChanges();
 
             return Ok(participant);

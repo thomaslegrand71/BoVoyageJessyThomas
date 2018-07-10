@@ -117,7 +117,9 @@ namespace BoVoyageJessyThomas.Controllers
                 return NotFound();
             }
 
-            db.Clients.Remove(client);
+            client.Deleted = true;
+            client.DeletedAt = DateTime.Now;
+            db.Entry(client).State = EntityState.Modified; 
             db.SaveChanges();
 
             return Ok(client);
