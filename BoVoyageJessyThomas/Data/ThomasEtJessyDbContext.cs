@@ -23,8 +23,6 @@ namespace BoVoyageJessyThomas.Data
 
         public DbSet<Participant> Participants { get; set; }
 
-        public DbSet<Personne> Personnes { get; set; }
-
         public DbSet<Reservation> Reservations { get; set; }
 
         public DbSet<Voyage> Voyages { get; set; }

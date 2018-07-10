@@ -8,7 +8,6 @@ namespace BoVoyageJessyThomas.Models
 {
     public class Reservation : BaseModel
     {
-        public int NumeroUnique { get; set; }
 
         public string NumeroCarteBancaire { get; set; }
 

@@ -33,38 +33,31 @@ namespace BoVoyageJessyThomas.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        NumeroUnique = c.Int(nullable: false),
                         NumeroCarteBancaire = c.String(),
                         PrixTotal = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IDClient = c.Int(nullable: false),
                         IDVoyage = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Personnes", t => t.IDClient, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.IDClient, cascadeDelete: true)
                 .ForeignKey("dbo.Voyages", t => t.IDVoyage, cascadeDelete: true)
                 .Index(t => t.IDClient)
                 .Index(t => t.IDVoyage);
             
             CreateTable(
-                "dbo.Personnes",
+                "dbo.Clients",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        Email = c.String(),
                         Civilite = c.String(),
                         Nom = c.String(),
                         Prenom = c.String(),
                         Adresse = c.String(),
                         Telephone = c.String(),
                         DateDeNaissance = c.DateTime(nullable: false),
-                        Email = c.String(),
-                        NumeroUnique = c.Int(),
-                        Reduction = c.Single(),
-                        IDReservation = c.Int(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Reservations", t => t.IDReservation, cascadeDelete: true)
-                .Index(t => t.IDReservation);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.Voyages",
@@ -96,25 +89,44 @@ namespace BoVoyageJessyThomas.Migrations
                     })
                 .PrimaryKey(t => t.ID);
             
+            CreateTable(
+                "dbo.Participants",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Reduction = c.Single(nullable: false),
+                        IDReservation = c.Int(nullable: false),
+                        Civilite = c.String(),
+                        Nom = c.String(),
+                        Prenom = c.String(),
+                        Adresse = c.String(),
+                        Telephone = c.String(),
+                        DateDeNaissance = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Reservations", t => t.IDReservation, cascadeDelete: true)
+                .Index(t => t.IDReservation);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Personnes", "IDReservation", "dbo.Reservations");
+            DropForeignKey("dbo.Participants", "IDReservation", "dbo.Reservations");
             DropForeignKey("dbo.Assurances", "IDReservation", "dbo.Reservations");
             DropForeignKey("dbo.Reservations", "IDVoyage", "dbo.Voyages");
             DropForeignKey("dbo.Voyages", "IDDestination", "dbo.Destinations");
             DropForeignKey("dbo.Voyages", "IDAgence", "dbo.Agences");
-            DropForeignKey("dbo.Reservations", "IDClient", "dbo.Personnes");
+            DropForeignKey("dbo.Reservations", "IDClient", "dbo.Clients");
+            DropIndex("dbo.Participants", new[] { "IDReservation" });
             DropIndex("dbo.Voyages", new[] { "IDAgence" });
             DropIndex("dbo.Voyages", new[] { "IDDestination" });
-            DropIndex("dbo.Personnes", new[] { "IDReservation" });
             DropIndex("dbo.Reservations", new[] { "IDVoyage" });
             DropIndex("dbo.Reservations", new[] { "IDClient" });
             DropIndex("dbo.Assurances", new[] { "IDReservation" });
+            DropTable("dbo.Participants");
             DropTable("dbo.Destinations");
             DropTable("dbo.Voyages");
-            DropTable("dbo.Personnes");
+            DropTable("dbo.Clients");
             DropTable("dbo.Reservations");
             DropTable("dbo.Assurances");
             DropTable("dbo.Agences");
