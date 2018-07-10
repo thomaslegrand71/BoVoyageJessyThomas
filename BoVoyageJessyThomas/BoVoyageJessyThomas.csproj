@@ -81,12 +81,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\images\atlas.png" />
+    <Content Include="CSS\images\client.png" />
     <Content Include="CSS\images\logoFB.jpg" />
     <Content Include="CSS\images\logoFB.png" />
     <Content Include="CSS\images\logoMail.png" />
     <Content Include="CSS\images\logoTwitter.png" />
+    <Content Include="CSS\images\participant.jpg" />
     <Content Include="CSS\images\pyramideLouvre.jpg" />
     <Content Include="CSS\images\pyramideLouvreOpaciteReduite.jpg" />
+    <Content Include="CSS\images\reservations.png" />
+    <Content Include="CSS\images\voyage.jpg" />
     <Content Include="Global.asax" />
     <Content Include="CSS\style.css" />
     <Content Include="Html\Client.html" />

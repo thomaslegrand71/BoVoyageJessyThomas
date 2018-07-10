@@ -8,7 +8,7 @@ namespace BoVoyageJessyThomas.Models
 {
     public class Reservation : BaseModel
     {
-        public int NumeroUnique { get; set; }
+        public int NumeroUnique { get; set; }//Doublon avec ID BaseModel
 
         public string NumeroCarteBancaire { get; set; }
 

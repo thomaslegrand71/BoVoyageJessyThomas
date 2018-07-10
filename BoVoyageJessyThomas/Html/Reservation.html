@@ -3,8 +3,153 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="Index.html">Menu Principal</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Voyage.html">Voyages <span class="sr-only">(current)</span></a>
+                    </li>
 
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Destination.html">Destinations <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Client.html">Clients <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Participant.html">Participants <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Reservation.html">Réservations <span class="sr-only">(current)</span></a>
+                    </li>
+
+                </ul>
+                <span class="navbar-text">
+                    Bienvenue sur le site de BoVoyage
+                </span>
+            </div>
+        </nav>
+    </header>
+    <div class="row">
+        <div class="formulaire">
+            <h2>Création d'une réservation</h2>
+
+
+            <bs-form-horizontal>
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Id_Client</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputIdClient" placeholder="Saisir un numéro de Client...">
+                        </div>
+                    </div>
+
+
+                    <!--Modifier pour pouvoir ajouter plusieurs participants-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Id_Participant</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputIdParticipant" placeholder="Saisir un numéro de Participant..." required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Id_Voyage</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputIdVoyage" placeholder="Saisir un numéro de Voyage..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Numéro_de_Réservation</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputReservation" placeholder="Saisir un numéro de Réservation..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Carte_Bancaire</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputCarteBancaire" placeholder="Saisir un numéro de Carte Bancaire...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Prix_Total</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputPrixTotal" placeholder="Saisir un prix...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </bs-form-horizontal>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+                $("form").submit(function (ev) {
+
+                    let nouveauParticipant = {
+                        Civilite: $("#inputCivilite").val(),//Verifier si la valeur est enregistrée avec .val (cf checkbox)
+                        Nom: $("#inputNom").val(),
+                        Prenom: $("#inputPrenom").val(),
+                        Adresse: $("#inputAdresse").val(),
+                        Telephone: $("#inputTelephone").val(),
+                        DateDeNaissance: $("#inputDateDeNaissance").val(),
+                        Reduction: $("inputReduction").val()
+                    };
+
+
+                    $.ajax({
+                        url:,//TODO ajouter l'url
+                        method: 'POST',
+                        data: nouveauParticipant,
+                        success: function (data) {
+                            alert(`Participant enregistré avec l'ID ${data.ID}`);
+                        }
+
+                    });
+
+                    ev.preventDefault();
+                })
+            })
+        </script>
+
+
+        <div class="footer">
+            <div id="logoFB">
+                <img src="images.logoFB.jpg" alt="logo Facebook" />
+            </div>
+
+            <p>
+                Mentions légales : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget luctus odio.
+
+
+
+
+            </p>
+
+        </div>
 </body>
 </html>
