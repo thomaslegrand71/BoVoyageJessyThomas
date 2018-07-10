@@ -21,7 +21,7 @@ namespace BoVoyageJessyThomas.Controllers
         // GET: api/Voyages
         public IQueryable<Voyage> GetVoyages()
         {    
-            return db.Voyages.Include(x=>x.IDAgence).Include(x=>x.IDDestination).Where(x=>!x.Deleted);
+            return db.Voyages.Include(x=>x.Agence).Include(x=>x.Destination).Where(x=>!x.Deleted);
         }
 
         [Route("{id:int}")]
@@ -110,7 +110,9 @@ namespace BoVoyageJessyThomas.Controllers
         // POST: api/Voyages
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult PostVoyage(Voyage voyage)
+            
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

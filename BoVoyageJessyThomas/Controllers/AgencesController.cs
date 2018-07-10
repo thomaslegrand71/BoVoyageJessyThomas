@@ -13,8 +13,10 @@ using BoVoyageJessyThomas.Models;
 
 namespace BoVoyageJessyThomas.Controllers
 {
+    [RoutePrefix("api/agences")]
     public class AgencesController : ApiController
     {
+       
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
 
         // GET: api/Agences
@@ -22,7 +24,7 @@ namespace BoVoyageJessyThomas.Controllers
         {
             return db.Agences;
         }
-
+        [Route("{id:int}")]
         // GET: api/Agences/5
         [ResponseType(typeof(Agence))]
         public IHttpActionResult GetAgence(int id)
