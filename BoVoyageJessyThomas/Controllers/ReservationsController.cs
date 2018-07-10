@@ -36,6 +36,23 @@ namespace BoVoyageJessyThomas.Controllers
             return Ok(reservation);
         }
 
+        [Route("search")]
+        [ResponseType(typeof(Reservation))]
+        public IQueryable<Reservation> GetSearch(int? idVoyage = null, int? idClient = null)
+        {
+            var query = db.Reservations.Where(x => !x.Deleted);
+            if (idVoyage != null)
+            {
+                query = query.Where(x => x.IDVoyage == idVoyage);
+            } 
+            if (idClient != null)
+            {
+                query = query.Where(x => x.IDClient == idClient);
+            }
+
+            return query;
+        }
+
         // PUT: api/Reservations/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutReservation(int id, Reservation reservation)

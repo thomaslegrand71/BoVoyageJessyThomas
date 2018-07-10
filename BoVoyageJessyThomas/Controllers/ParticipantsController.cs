@@ -36,6 +36,27 @@ namespace BoVoyageJessyThomas.Controllers
             return Ok(participant);
         }
 
+        [Route("search")]
+        [ResponseType(typeof(Participant))]
+        public IQueryable<Participant> GetSearch(string nom = "", string prenom = "", string adresse = "")
+        {
+            var query = db.Participants.Where(x => !x.Deleted);
+            if (!string.IsNullOrWhiteSpace(nom))
+            {
+                query = query.Where(x => x.Nom.Contains(nom));
+            }
+            if (!string.IsNullOrWhiteSpace(prenom))
+            {
+                query = query.Where(x => x.Prenom.Contains(prenom));
+            }
+            if (!string.IsNullOrWhiteSpace(adresse))
+            {
+                query = query.Where(x => x.Adresse.Contains(adresse));
+            }
+
+            return query;
+        }
+
         // PUT: api/Participants/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutParticipant(int id, Participant participant)
