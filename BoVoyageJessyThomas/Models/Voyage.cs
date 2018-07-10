@@ -16,9 +16,19 @@ namespace BoVoyageJessyThomas.Models
 
         public decimal TarifToutCompris { get; set; }
 
-        [ForeignKey("IdDestination")]
-        public int IdDestination { get; set; }
+      
+        public int IDDestination { get; set; }
+
+        [ForeignKey("IDDestination")]
         public Destination Destination { get; set; }
+
+
+       
+        public int IDAgence { get; set; }
+
+        [ForeignKey("IDAgence")]
+        public Agence Agence { get; set; }
+
 
     }
 }

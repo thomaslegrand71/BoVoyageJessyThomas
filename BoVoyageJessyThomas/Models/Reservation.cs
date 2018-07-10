@@ -8,22 +8,21 @@ namespace BoVoyageJessyThomas.Models
 {
     public class Reservation : BaseModel
     {
-        public int NumeroUnique { get; set; }//Doublon avec ID BaseModel
 
         public string NumeroCarteBancaire { get; set; }
 
         public decimal PrixTotal { get; set; }
 
-        [ForeignKey("IdParticipant")]
-        public int IdParticipant { get; set; }
-        public IQueryable<Participant> Participants { get; set; }
+        
+        public int IDClient { get; set; }
 
-        [ForeignKey("IdClient")]
-        public int IdClient { get; set; }
+        [ForeignKey("IDClient")]
         public Client Client { get; set; }
 
-        [ForeignKey("IdVoyage")]
-        public int IdVoyage { get; set; }
+       
+        public int IDVoyage { get; set; }
+
+        [ForeignKey("IDVoyage")]
         public Voyage Voyage { get; set; }
     }
 }
