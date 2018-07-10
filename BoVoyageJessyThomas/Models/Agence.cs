@@ -10,10 +10,6 @@ namespace BoVoyageJessyThomas.Models
     {
         public string Nom { get; set; }
 
-        [ForeignKey("IdVoyage")]
-        public int IdVoyage { get; set; }
-        public Voyage Voyage { get; set; }
-
 
 
     }
