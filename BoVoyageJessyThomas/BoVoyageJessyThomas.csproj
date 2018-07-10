@@ -111,27 +111,27 @@
     <Content Include="CSS\style.css" />
     <Content Include="Html\Client\ClientGet.html" />
     <Content Include="Html\Client\ClientPost.html" />
-    <Content Include="Html\Client\IndexClient.html" />
+    <Content Include="Html\Client\ClientIndex.html" />
     <Content Include="Html\Destination\DestinationDelete.html" />
     <Content Include="Html\Destination\DestinationGet.html" />
     <Content Include="Html\Destination\DestinationPost.html" />
     <Content Include="Html\Client\ClientDelete.html" />
     <Content Include="Html\Destination\DestinationPut.html" />
-    <Content Include="Html\Destination\IndexDestination.html" />
+    <Content Include="Html\Destination\DestinationIndex.html" />
     <Content Include="Html\Index.html" />
-    <Content Include="Html\Participant\IndexParticipant.html" />
+    <Content Include="Html\Participant\ParticipantIndex.html" />
     <Content Include="Html\Participant\ParticipantDelete.html" />
     <Content Include="Html\Participant\ParticipantPost.html" />
     <Content Include="Html\Client\ClientPut.html" />
     <Content Include="Html\Participant\ParticipantGet.html" />
     <Content Include="Html\Participant\ParticipantPut.html" />
-    <Content Include="Html\Reservation\IndexReservation.html" />
+    <Content Include="Html\Reservation\ReservationIndex.html" />
     <Content Include="Html\Reservation\ReservationDelete.html" />
     <Content Include="Html\Reservation\ReservationPost.html" />
     <Content Include="Html\Reservation\ReservationGet.html" />
     <Content Include="Html\Reservation\ReservationPut.html" />
     <Content Include="Html\testCSS.html" />
-    <Content Include="Html\Voyage\IndexVoyage.html" />
+    <Content Include="Html\Voyage\VoyageIndex.html" />
     <Content Include="Html\Voyage\VoyageDelete.html" />
     <Content Include="Html\Voyage\VoyageGet.html" />
     <Content Include="Html\Voyage\VoyagePost.html" />
@@ -158,6 +158,10 @@
     <Compile Include="Migrations\201807100959554_AjoutController.cs" />
     <Compile Include="Migrations\201807100959554_AjoutController.Designer.cs">
       <DependentUpon>201807100959554_AjoutController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807101333585_ModificationsController.cs" />
+    <Compile Include="Migrations\201807101333585_ModificationsController.Designer.cs">
+      <DependentUpon>201807101333585_ModificationsController.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agence.cs" />
@@ -189,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807100959554_AjoutController.resx">
       <DependentUpon>201807100959554_AjoutController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807101333585_ModificationsController.resx">
+      <DependentUpon>201807101333585_ModificationsController.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
