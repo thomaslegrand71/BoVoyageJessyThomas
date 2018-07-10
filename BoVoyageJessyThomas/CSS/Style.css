@@ -34,6 +34,19 @@ header{
     width:100%
 }
 
-#Client{
+#sousMenuVoyage{
+    padding-top: 13cm;
+    font-size:18px;
 
+}
+
+.col{
+    font-size:30px;
+    border-color:dodgerblue;
+    border-width:3px 3px 3px 3px;
+}
+
+.case1{
+    width:15cm;
+    position:center;
 }
