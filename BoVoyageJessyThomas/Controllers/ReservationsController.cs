@@ -17,13 +17,20 @@ namespace BoVoyageJessyThomas.Controllers
     public class ReservationsController : ApiController
     {
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
-
+        /// <summary>
+        /// Consulter la liste des réservations
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Reservations
         public IQueryable<Reservation> GetReservations()
         {
             return db.Reservations.Include(x=>x.Voyage).Include(x=>x.Client).Where(x=>!x.Deleted);
         }
-
+        /// <summary>
+        /// Consulter une réservation en fonction de son identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("{id:int}")]
         // GET: api/Reservations/5
         [ResponseType(typeof(Reservation))]
@@ -37,7 +44,12 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(reservation);
         }
-
+        /// <summary>
+        /// Consulter une réservation en fonction de la fonction Search
+        /// </summary>
+        /// <param name="idVoyage"></param>
+        /// <param name="idClient"></param>
+        /// <returns></returns>
         [Route("search")]
         [ResponseType(typeof(Reservation))]
         public IQueryable<Reservation> GetSearch(int? idVoyage = null, int? idClient = null)
@@ -54,8 +66,14 @@ namespace BoVoyageJessyThomas.Controllers
 
             return query;
         }
-
+        /// <summary>
+        /// Modifier une réservation en fonction du nom ou de l'identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="reservation"></param>
+        /// <returns></returns>
         // PUT: api/Reservations/5
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutReservation(int id, Reservation reservation)
         {
@@ -89,7 +107,11 @@ namespace BoVoyageJessyThomas.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        /// <summary>
+        /// Ajouter une réservation
+        /// </summary>
+        /// <param name="reservation"></param>
+        /// <returns></returns>
         // POST: api/Reservations
         [ResponseType(typeof(Reservation))]
         public IHttpActionResult PostReservation(Reservation reservation)
@@ -104,8 +126,13 @@ namespace BoVoyageJessyThomas.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = reservation.ID }, reservation);
         }
-
+        /// <summary>
+        /// Supprimer une réservation
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE: api/Reservations/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Reservation))]
         public IHttpActionResult DeleteReservation(int id)
         {
@@ -120,7 +147,10 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(reservation);
         }
-
+        /// <summary>
+        /// Libère la connexion à la BDD
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

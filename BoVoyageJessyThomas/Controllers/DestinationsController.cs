@@ -17,13 +17,20 @@ namespace BoVoyageJessyThomas.Controllers
     public class DestinationsController : ApiController
     {
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
-
+        /// <summary>
+        /// Consulter la liste des destinations
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Destinations
         public IQueryable<Destination> GetDestinations()
         {
             return db.Destinations;
         }
-
+        /// <summary>
+        /// Consulter une destination en fonction de son identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("{id:int}")]
         // GET: api/Destinations/5
         [ResponseType(typeof(Destination))]
@@ -37,6 +44,13 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(destination);
         }
+        /// <summary>
+        /// Consulter une destination avec la fonction Search
+        /// </summary>
+        /// <param name="continent"></param>
+        /// <param name="pays"></param>
+        /// <param name="region"></param>
+        /// <returns></returns>
         [Route("search")]
         //Get : api/Destination/search
     
@@ -59,9 +73,15 @@ namespace BoVoyageJessyThomas.Controllers
 
             return query;
         }
-
+        /// <summary>
+        /// Modifier une destination en fonctiond du nom ou de l'identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
 
         // PUT: api/Destinations/5
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDestination(int id, Destination destination)
         {
@@ -95,7 +115,11 @@ namespace BoVoyageJessyThomas.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        /// <summary>
+        /// Ajouter une destination
+        /// </summary>
+        /// <param name="destination"></param>
+        /// <returns></returns>
         // POST: api/Destinations
         [ResponseType(typeof(Destination))]
         public IHttpActionResult PostDestination(Destination destination)
@@ -110,8 +134,13 @@ namespace BoVoyageJessyThomas.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = destination.ID }, destination);
         }
-
+        /// <summary>
+        /// Supprimer une destination
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE: api/Destinations/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Destination))]
         public IHttpActionResult DeleteDestination(int id)
         {
@@ -128,7 +157,10 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(destination);
         }
-
+        /// <summary>
+        /// libère la connexion à la BDD
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -18,12 +18,20 @@ namespace BoVoyageJessyThomas.Controllers
     {
        
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
-
+        /// <summary>
+        /// Consulter la liste des Agences
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Agences
         public IQueryable<Agence> GetAgences()
         {
             return db.Agences;
         }
+        /// <summary>
+        /// Consulter les agences en fonction de l'identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("{id:int}")]
         // GET: api/Agences/5
         [ResponseType(typeof(Agence))]
@@ -37,6 +45,11 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(agence);
         }
+        /// <summary>
+        /// Consulter les agences en fonction du nom
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <returns></returns>
         [Route("{name}")]
         [ResponseType(typeof(Agence))]
         public IQueryable<Agence> Getagence(string nom)
@@ -44,8 +57,15 @@ namespace BoVoyageJessyThomas.Controllers
             return db.Agences.Where(x => !x.Deleted && x.Nom.Contains(nom));
         }
 
-
+        /// <summary>
+        /// Modifier une agence en fonction de son nom ou de son identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="agence"></param>
+        /// <returns></returns>
+        
         // PUT: api/Agences/5
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAgence(int id, Agence agence)
         {
@@ -79,6 +99,11 @@ namespace BoVoyageJessyThomas.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+        /// <summary>
+        /// Ajouter une agence
+        /// </summary>
+        /// <param name="agence"></param>
+        /// <returns></returns>
 
         // POST: api/Agences
         [ResponseType(typeof(Agence))]
@@ -94,8 +119,13 @@ namespace BoVoyageJessyThomas.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = agence.ID }, agence);
         }
-
+        /// <summary>
+        /// Supprimer une agence
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE: api/Agences/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Agence))]
         public IHttpActionResult DeleteAgence(int id)
         {
@@ -112,7 +142,10 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(agence);
         }
-
+        /// <summary>
+        /// Libère la connexion à la base de donnée
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

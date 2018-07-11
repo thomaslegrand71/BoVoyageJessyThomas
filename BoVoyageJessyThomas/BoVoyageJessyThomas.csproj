@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\BoVoyageJessyThomas.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -163,6 +164,10 @@
     <Compile Include="Migrations\201807101333585_ModificationsController.Designer.cs">
       <DependentUpon>201807101333585_ModificationsController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807110641214_ModificationCreatedAt.cs" />
+    <Compile Include="Migrations\201807110641214_ModificationCreatedAt.Designer.cs">
+      <DependentUpon>201807110641214_ModificationCreatedAt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agence.cs" />
     <Compile Include="Models\Assurance.cs" />
@@ -196,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807101333585_ModificationsController.resx">
       <DependentUpon>201807101333585_ModificationsController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807110641214_ModificationCreatedAt.resx">
+      <DependentUpon>201807110641214_ModificationCreatedAt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

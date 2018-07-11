@@ -17,12 +17,20 @@ namespace BoVoyageJessyThomas.Controllers
     public class ClientsController : ApiController
     {
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
-
+        /// <summary>
+        /// Consulter la liste de clients
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Clients
         public IQueryable<Client> GetClients()
         {
             return db.Clients;
         }
+        /// <summary>
+        /// Consulter un client en fonction de son identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("{id:int}")]
         // GET: api/Clients/5
         [ResponseType(typeof(Client))]
@@ -36,7 +44,12 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(client);
         }
-
+        /// <summary>
+        /// Consulter un client en fonction de la méthode Search
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <returns></returns>
         [Route("search")]
         [ResponseType(typeof(Client))]
         public IQueryable<Client> GetSearch(string nom = "", string prenom = "")
@@ -54,8 +67,14 @@ namespace BoVoyageJessyThomas.Controllers
             return query;
         }
 
-
+        /// <summary>
+        /// Modifier un client en fonction de l'identifiant ou de son nom
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="client"></param>
+        /// <returns></returns>
         // PUT: api/Clients/5
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutClient(int id, Client client)
         {
@@ -90,7 +109,11 @@ namespace BoVoyageJessyThomas.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-      
+      /// <summary>
+      /// Ajouter un client 
+      /// </summary>
+      /// <param name="client"></param>
+      /// <returns></returns>
 
         // POST: api/Clients
         [ResponseType(typeof(Client))]
@@ -106,8 +129,14 @@ namespace BoVoyageJessyThomas.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = client.ID }, client);
         }
+        /// <summary>
+        /// Supprimer un client en fonction de son identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         // DELETE: api/Clients/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Client))]
         public IHttpActionResult DeleteClient(int id)
         {
@@ -124,7 +153,10 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(client);
         }
-
+        /// <summary>
+        /// Libère la connexion à la base de données
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

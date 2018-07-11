@@ -7,10 +7,10 @@ namespace BoVoyageJessyThomas.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Agences", "CreatedAt", c => c.DateTime(nullable: false));
+            AddColumn("dbo.Agences", "CreatedAt", c => c.DateTime(nullable: false,defaultValueSql:"getdate()"));
             AddColumn("dbo.Agences", "Deleted", c => c.Boolean(nullable: false));
             AddColumn("dbo.Agences", "DeletedAt", c => c.DateTime());
-            AddColumn("dbo.Assurances", "CreatedAt", c => c.DateTime(nullable: false));
+            AddColumn("dbo.Assurances", "CreatedAt", c => c.DateTime(nullable: false, defaultValueSql:"getdate()"));
             AddColumn("dbo.Assurances", "Deleted", c => c.Boolean(nullable: false));
             AddColumn("dbo.Assurances", "DeletedAt", c => c.DateTime());
             AddColumn("dbo.Reservations", "CreatedAt", c => c.DateTime(nullable: false, defaultValueSql: "getdate()"));

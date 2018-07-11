@@ -17,13 +17,20 @@ namespace BoVoyageJessyThomas.Controllers
     public class VoyagesController : ApiController
     {    
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
-
+        /// <summary>
+        /// Consulter la liste des voyages
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Voyages
         public IQueryable<Voyage> GetVoyages()
         {    
             return db.Voyages.Include(x=>x.Agence).Include(x=>x.Destination).Where(x=>!x.Deleted);
         }
-
+        /// <summary>
+        /// Consulter un voyage en fonction de son identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("{id:int}")]
         // GET: api/Voyages/5
         [ResponseType(typeof(Voyage))]
@@ -37,6 +44,16 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(voyage);
         }
+        /// <summary>
+        /// Consulter un voyage en fonction de la méthode Search
+        /// </summary>
+        /// <param name="iddestination"></param>
+        /// <param name="idagence"></param>
+        /// <param name="datealler"></param>
+        /// <param name="dateretour"></param>
+        /// <param name="placesdisponibles"></param>
+        /// <param name="tariftoutcompris"></param>
+        /// <returns></returns>
 
         [Route("search")]
         [ResponseType(typeof(Voyage))]
@@ -71,8 +88,14 @@ namespace BoVoyageJessyThomas.Controllers
             }
             return query;
         }
-
+        /// <summary>
+        /// Modifier un voyage en fonction du nom ou de l'identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="voyage"></param>
+        /// <returns></returns>
         // PUT: api/Voyages/5
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutVoyage(int id, Voyage voyage)
         {
@@ -106,7 +129,11 @@ namespace BoVoyageJessyThomas.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        /// <summary>
+        /// Ajouter un voyage 
+        /// </summary>
+        /// <param name="voyage"></param>
+        /// <returns></returns>
         // POST: api/Voyages
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult PostVoyage(Voyage voyage)
@@ -123,8 +150,13 @@ namespace BoVoyageJessyThomas.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = voyage.ID }, voyage);
         }
-
+        /// <summary>
+        /// Supprimer un voyage
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE: api/Voyages/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult DeleteVoyage(int id)
         {
@@ -141,7 +173,10 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(voyage);
         }
-
+        /// <summary>
+        /// Libérer la connexion à la BDD
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
