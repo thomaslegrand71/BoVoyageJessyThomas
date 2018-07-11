@@ -137,16 +137,16 @@
 
                     for (let item of Reservations) {
                         $("#mytab").append(`<tr>
-                        <td>${item.Client.Nom}</td>
-                        <td>${item.Client.Prenom}</td>
-                        <td>${item.Client.DateDeNaissance}</td>
-                        <td>${item.Voyage.DateAller}</td>
-                        <td>${item.Voyage.DateRetour}</td>
-                        <td>${item.Voyage.PlacesDisponibles}</td>
-                        <td>${item.PrixTotal}</td>
-                        <td><a href="ReservationPut.html" class="btn btn-warning">Modifier</a></td>
-                        <td><a href="ReservationDelete.html" class="btn btn-danger">Supprimer</a></td>
-                        </tr>`)
+                                <td>${item.Client.Nom}</td>
+                                <td>${item.Client.Prenom}</td>
+                                <td>${item.Client.DateDeNaissance}</td>
+                                <td>${item.Voyage.DateAller}</td>
+                                <td>${item.Voyage.DateRetour}</td>
+                                <td>${item.Voyage.PlacesDisponibles}</td>
+                                <td>${item.PrixTotal}</td>
+                                <td><a href="ReservationPut.html" class="btn btn-warning">Modifier</a></td>
+                                <td><a href="ReservationDelete.html" class="btn btn-danger">Supprimer</a></td>
+                                </tr>`)
                     }
 
                 })

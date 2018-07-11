@@ -128,30 +128,30 @@
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-   <script>
-       $(document).ready(function () {
-           $.get(
-               'http://localhost:50002/api/Participants', function (Participants) {
+    <script>
+        $(document).ready(function () {
+            $.get(
+                'http://localhost:50002/api/Participants', function (Participants) {
 
 
-               for (let item of Participants) {
-                       $("#mytab").append(`<tr>
-                <td>${item.Civilite}</td>
-                <td>${item.Nom}</td>
-                <td>${item.Prenom}</td>
-                <td>${item.Adresse}</td>
-                <td>${item.Telephone}</td>
-                <td>${item.DateDeNaissance}</td>
-                <td>${item.Reduction}</td>
-                <td>${item.IDReservation}</td>
-                <td><a href="ParticipantPut.html" class="btn btn-warning">Modifier</a></td>
-                <td><a href="ParticipantDelete.html" class="btn btn-danger">Supprimer</a></td>
-                </tr>`)
-                   }
+                    for (let item of Participants) {
+                        $("#mytab").append(`<tr>
+                    <td>${item.Civilite}</td>
+                    <td>${item.Nom}</td>
+                    <td>${item.Prenom}</td>
+                    <td>${item.Adresse}</td>
+                    <td>${item.Telephone}</td>
+                    <td>${item.DateDeNaissance}</td>
+                    <td>${item.Reduction}</td>
+                    <td>${item.IDReservation}</td>
+                    <td><a href="ParticipantPut.html" class="btn btn-warning">Modifier</a></td>
+                    <td><a href="ParticipantDelete.html" class="btn btn-danger">Supprimer</a></td>
+                    </tr>`)
+                    }
 
-               })
-       });
-   </script>
-   
+                })
+        });
+    </script>
+
 </body>
 </html>
