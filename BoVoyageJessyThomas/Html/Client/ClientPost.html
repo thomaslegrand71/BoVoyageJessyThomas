@@ -35,7 +35,7 @@
                         <li class="nav-item active">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                    Destination
+                                    Destinations
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -49,7 +49,7 @@
                         <li class="nav-item active">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                    Client
+                                    Clients
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -63,7 +63,7 @@
                         <li class="nav-item active">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                    Participant
+                                    Participants
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -78,7 +78,7 @@
                         <li class="nav-item active">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                    Réservation
+                                    Réservations
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -100,7 +100,8 @@
                 </div>
             </nav>
         </div>
-    </header><div class="col-md-12">
+    </header>
+    <div class="col-md-12">
         <div class="row">
             <div class="formulaire">
 
@@ -164,7 +165,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="exampleInputEmail">Réduction_appliquée</label>
                                 <div class="col-sm-10">
-                                    <input type="number"step="1" value="0" min="0" class="form-control" id="inputReduction" placeholder="Saisir une réduction...">
+                                    <input type="number" step="1" value="0" min="0" class="form-control" id="inputReduction" placeholder="Saisir une réduction...">
                                 </div>
                             </div>
                         </fieldset>
@@ -174,62 +175,55 @@
                                 <button type="submit" class="btn btn-default">Enregistrer</button>
                             </div>
                         </div>
-            
-            </form>
-            </bs-form-horizontal>
 
+                    </form>
+                </bs-form-horizontal>
+
+            </div>
         </div>
 
-
-        </div>
-
+    </div>
 
 
 
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 
+    <script>
+        $(document).ready(function () {
+
+            $("form").submit(function (ev) {
+
+                let nouveauClient = {
+                    Civilite: $("#inputCivilite").val(),
+                    Nom: $("#inputNom").val(),
+                    Prenom: $("#inputPrenom").val(),
+                    Adresse: $("#inputAdresse").val(),
+                    Telephone: $("#inputTelephone").val(),
+                    DateDeNaissance: $("#inputDateDeNaissance").val(),
+                    Email: $("#inputEmail").val()
+                };
 
 
+                $.ajax({
+                    url: `http://localhost:50002/api/Clients`,
+                    method: 'POST',
+                    data: nouveauClient,
+                    success: function (data) {
+                        alert(`Client enregistré avec l'ID ${data.ID}`);
+                    }
 
+                });
 
-
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-        <script>
-            $(document).ready(function () {
-
-                $("form").submit(function (ev) {
-
-                    let nouveauClient = {
-                        Civilite: $("#inputCivilite").val(),
-                        Nom: $("#inputNom").val(),
-                        Prenom: $("#inputPrenom").val(),
-                        Adresse: $("#inputAdresse").val(),
-                        Telephone: $("#inputTelephone").val(),
-                        DateDeNaissance: $("#inputDateDeNaissance").val(),
-                        Email: $("#inputEmail").val()
-                    };
-
-
-                    $.ajax({
-                        url: `http://localhost:50002/api/Clients`,
-                        method: 'POST',
-                        data: nouveauClient,
-                        success: function (data) {
-                            alert(`Client enregistré avec l'ID ${data.ID}`);
-                        }
-
-                    });
-
-                    ev.preventDefault();
-                })
+                ev.preventDefault();
             })
-        </script>
+        })
+    </script>
 
 
 
