@@ -163,6 +163,10 @@
     <Compile Include="Migrations\201807110641214_ModificationCreatedAt.Designer.cs">
       <DependentUpon>201807110641214_ModificationCreatedAt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807110910037_Personneclé.cs" />
+    <Compile Include="Migrations\201807110910037_Personneclé.Designer.cs">
+      <DependentUpon>201807110910037_Personneclé.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agence.cs" />
     <Compile Include="Models\Assurance.cs" />
@@ -199,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807110641214_ModificationCreatedAt.resx">
       <DependentUpon>201807110641214_ModificationCreatedAt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807110910037_Personneclé.resx">
+      <DependentUpon>201807110910037_Personneclé.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
