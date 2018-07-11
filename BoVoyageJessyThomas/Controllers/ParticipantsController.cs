@@ -13,18 +13,26 @@ using BoVoyageJessyThomas.Models;
 
 namespace BoVoyageJessyThomas.Controllers
 {
+   
     [RoutePrefix("api/participants")]
     public class ParticipantsController : ApiController
     {
 
         private ThomasEtJessyDbContext db = new ThomasEtJessyDbContext();
-
+        /// <summary>
+        /// Consulter les participants
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Participants
         public IQueryable<Participant> GetParticipants()
         {
             return db.Participants;
         }
-
+        /// <summary>
+        /// Consulter les participants en fonction des identifiants
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("{id:int}")]
         // GET: api/Participants/5
         [ResponseType(typeof(Participant))]
@@ -38,7 +46,12 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(participant);
         }
-
+        /// <summary>
+        /// Consulter les participants en fonction de recherches différentes
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <returns></returns>
         [Route("search")]
         [ResponseType(typeof(Participant))]
         public IQueryable<Participant> GetSearch(string nom = "", string prenom = "")
@@ -54,7 +67,12 @@ namespace BoVoyageJessyThomas.Controllers
             }
             return query;
         }
-
+        /// <summary>
+        /// Modifier des participants en fonction du nom ou de l'identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="participant"></param>
+        /// <returns></returns>
         // PUT: api/Participants/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutParticipant(int id, Participant participant)
@@ -89,7 +107,11 @@ namespace BoVoyageJessyThomas.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        /// <summary>
+        /// Ajouter des nouveaux participants
+        /// </summary>
+        /// <param name="participant"></param>
+        /// <returns></returns>
         // POST: api/Participants
         [ResponseType(typeof(Participant))]
         public IHttpActionResult PostParticipant(Participant participant)
@@ -104,7 +126,11 @@ namespace BoVoyageJessyThomas.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = participant.ID }, participant);
         }
-
+        /// <summary>
+        /// Supprimer des participants en fonction de son identifiant
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE: api/Participants/5
         [ResponseType(typeof(Participant))]
         public IHttpActionResult DeleteParticipant(int id)
@@ -122,6 +148,10 @@ namespace BoVoyageJessyThomas.Controllers
 
             return Ok(participant);
         }
+        /// <summary>
+        /// Libérer le controller du flux de la base de donnée
+        /// </summary>
+        /// <param name="disposing"></param>
 
         protected override void Dispose(bool disposing)
         {
