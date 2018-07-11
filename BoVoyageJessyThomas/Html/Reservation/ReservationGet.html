@@ -99,30 +99,58 @@
 
                 </div>
             </nav>
-            </div>
+        </div>
     </header>
 
-    <bs-form-horizontal>
-        <h2>Recherche d'une réservation</h2>
-        <form>
-            <div>
+    <div class="container">
+        <h2>Affichage des réservations</h2>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="exampleInputEmail" style="margin-top:2cm">Nom</label>
-                    <div class="col-sm-10">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width:10cm;" id="inputReservation" required>
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </div>
-                </div>
+        <table class="table  table-striped table-primary table-hover" style="margin-top:50px" ;>
 
+            <thead>
+                <tr>
+                    <th>Nom du client</th>
+                    <th>Prénom du client</th>
+                    <th>Date de Naissance</th>
+                    <th>Date Aller</th>
+                    <th>Date Retour</th>
+                    <th>Places disponibles</th>
+                    <th>Prix Total</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody id="mytab"></tbody>
+        </table>
+    </div>
 
-            </div>
-        </form>
-    </bs-form-horizontal>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.get(
+                'http://localhost:50002/api/Reservations', function (Reservations) {
+
+
+                    for (let item of Reservations) {
+                        $("#mytab").append(`<tr>
+                        <td>${item.Client.Nom}</td>
+                        <td>${item.Client.Prenom}</td>
+                        <td>${item.Client.DateDeNaissance}</td>
+                        <td>${item.Voyage.DateAller}</td>
+                        <td>${item.Voyage.DateRetour}</td>
+                        <td>${item.Voyage.PlacesDisponibles}</td>
+                        <td>${item.PrixTotal}</td>
+                        <td><a href="ReservationPut.html" class="btn btn-warning">Modifier</a></td>
+                        <td><a href="ReservationDelete.html" class="btn btn-danger">Supprimer</a></td>
+                        </tr>`)
+                    }
+
+                })
+        });
+    </script>
 </body>
 </html>
