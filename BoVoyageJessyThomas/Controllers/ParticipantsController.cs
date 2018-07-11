@@ -26,7 +26,7 @@ namespace BoVoyageJessyThomas.Controllers
         // GET: api/Participants
         public IQueryable<Participant> GetParticipants()
         {
-            return db.Participants;
+            return db.Participants.Include(x => x.Reservation).Where(x => !x.Deleted);
         }
         /// <summary>
         /// Consulter les participants en fonction des identifiants
@@ -56,7 +56,7 @@ namespace BoVoyageJessyThomas.Controllers
         [ResponseType(typeof(Participant))]
         public IQueryable<Participant> GetSearch(string nom = "", string prenom = "")
         {
-            var query = db.Participants.Where(x => !x.Deleted);
+            var query = db.Participants.Include(x=>x.Reservation).Where(x => !x.Deleted);
             if (!string.IsNullOrWhiteSpace(nom))
             {
                 query = query.Where(x => x.Nom.Contains(nom));
@@ -116,7 +116,9 @@ namespace BoVoyageJessyThomas.Controllers
         // POST: api/Participants
         [ResponseType(typeof(Participant))]
         public IHttpActionResult PostParticipant(Participant participant)
+
         {
+            db.Participants.Include(x => x.Reservation);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
