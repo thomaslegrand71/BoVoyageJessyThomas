@@ -10,7 +10,7 @@
  - création des controllers avec la méthode en scaffolding
  - validation des routes et des méthodes CRUD via Postman
  - mise en place de la documentation via Swagger
- - les controllers et leurs routes ont été testé et sont fonctionnels (testé avec des valeurs au bon format et des valeurs avec un mauvais format)
+ - les controllers et leurs routes ont été testés et sont fonctionnels (testé avec des valeurs au bon format et des valeurs avec un mauvais format)
  
 ####Création de la partie Front-Office
  - création de la structure du site (1 page principale et des dossiers correspondants aux classes models, chaque dossier ayant une page pour chacune des méthodes du CRUD)
