@@ -101,25 +101,95 @@
 
     </header>
 
-    <bs-form-horizontal>
-        <form class="form-horizontal" role="form">
-            <h2>Suppression d'un profil client</h2>
+    <div class="row">
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="exampleInputEmail">Numéro_de_client_à_modifier</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="inputIdClient" placeholder="Saisir un identifiant..." required>
-                </div>
-            </div>
+        <div class="formulaire">
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Enregistrer</button>
-                </div>
-            </div>
 
-        </form>
-    </bs-form-horizontal>
+
+            <bs-form-horizontal>
+                <form class="form-horizontal" role="form">
+                    <h2>Modification d'un profil client</h2>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Numéro_de_client_à_modifier</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="inputIdClient" placeholder="Saisir un identifiant..." required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Civilité</label>
+                        <select multiple class="form-control" id="inputCivilite">
+                            <option>Mr</option>
+                            <option>Mme</option>
+                            <option>Mlle</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Nom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputNom" placeholder="Saisir un nom..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Prénom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPrenom" placeholder="Saisir un prénom..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Adresse</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputAdresse" placeholder="Saisir une adresse..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Telephone</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputTelephone" placeholder="Saisir un téléphone..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Date_de_Naissance</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="inputDateDeNaissance" placeholder="Saisir une date de naissance..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Saisir un email..." required>
+                        </div>
+                    </div>
+
+                    <fieldset disabled>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="exampleInputEmail">Réduction_appliquée</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputReduction" placeholder="Saisir une réduction...">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </bs-form-horizontal>
+        </div>
+
+    </div>
+    
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -133,10 +203,21 @@
 
             $("form").submit(function (ev) {
 
+                let nouveauClient = {
+                    ID: $("#inputIdClient").val(),
+                    Civilite: $("#inputCivilite").val(),
+                    Nom: $("#inputNom").val(),
+                    Prenom: $("#inputPrenom").val(),
+                    Adresse: $("#inputAdresse").val(),
+                    Telephone: $("#inputTelephone").val(),
+                    DateDeNaissance: $("#inputDateDeNaissance").val(),
+                    Email: $("#inputEmail").val()
+                };
+
                 $.ajax({
                     url: "http://localhost:50002/api/Clients/" + $("#inputIdClient").val(),
                     method: 'PUT',
-
+                    data: nouveauClient,
                     success: function (data) {
                         alert(`Client modifié avec l'ID ${data.ID}`);
                     }
