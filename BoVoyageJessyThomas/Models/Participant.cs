@@ -10,7 +10,7 @@ namespace BoVoyageJessyThomas.Models
     {
 
         public float Reduction { get; set; }
-     
+
         public int IDReservation { get; set; }
 
         [ForeignKey("IDReservation")]

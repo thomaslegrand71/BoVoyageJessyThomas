@@ -24,7 +24,7 @@ namespace BoVoyageJessyThomas.Controllers
         // GET: api/Reservations
         public IQueryable<Reservation> GetReservations()
         {
-            return db.Reservations.Include(x=>x.Voyage).Include(x=>x.Client).Where(x=>!x.Deleted);
+            return db.Reservations.Include(x => x.Voyage).Include(x => x.Client).Where(x => !x.Deleted);
         }
         /// <summary>
         /// Consulter une réservation en fonction de son identifiant
@@ -58,7 +58,7 @@ namespace BoVoyageJessyThomas.Controllers
             if (idVoyage != null)
             {
                 query = query.Where(x => x.IDVoyage == idVoyage);
-            } 
+            }
             if (idClient != null)
             {
                 query = query.Where(x => x.IDClient == idClient);
@@ -116,6 +116,8 @@ namespace BoVoyageJessyThomas.Controllers
         [ResponseType(typeof(Reservation))]
         public IHttpActionResult PostReservation(Reservation reservation)
         {
+            db.Reservations.Include(x => x.Client).Include(x => x.Voyage);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -131,6 +133,7 @@ namespace BoVoyageJessyThomas.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+       
         // DELETE: api/Reservations/5
         [Route("{id:int}")]
         [ResponseType(typeof(Reservation))]
@@ -142,7 +145,11 @@ namespace BoVoyageJessyThomas.Controllers
                 return NotFound();
             }
 
-            db.Reservations.Remove(reservation);
+            reservation.Deleted = true;
+            reservation.DeletedAt = DateTime.Now;
+
+            db.Entry(reservation).State = EntityState.Modified;
+            
             db.SaveChanges();
 
             return Ok(reservation);

@@ -61,7 +61,7 @@ namespace BoVoyageJessyThomas.Controllers
         {
 
             
-            var query = db.Voyages.Include(x=>x.IDAgence).Include(x=>x.IDDestination).Where(x => !x.Deleted);
+            var query = db.Voyages.Include(x=>x.Agence).Include(x=>x.Destination).Where(x => !x.Deleted);
             if (iddestination!=null)
             {
                 query = query.Where(x => x.IDDestination == iddestination);
@@ -139,6 +139,7 @@ namespace BoVoyageJessyThomas.Controllers
         public IHttpActionResult PostVoyage(Voyage voyage)
             
         {
+            var voyages = db.Voyages.Include(x => x.Agence).Include(x => x.Destination);
 
             if (!ModelState.IsValid)
             {
