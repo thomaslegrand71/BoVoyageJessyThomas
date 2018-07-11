@@ -127,11 +127,11 @@
     <Content Include="Html\Reservation\ReservationPost.html" />
     <Content Include="Html\Reservation\ReservationGet.html" />
     <Content Include="Html\Reservation\ReservationPut.html" />
-    <Content Include="Html\testCSS.html" />
     <Content Include="Html\Voyage\VoyageDelete.html" />
     <Content Include="Html\Voyage\VoyageGet.html" />
     <Content Include="Html\Voyage\VoyagePost.html" />
     <Content Include="Html\Voyage\VoyagePut.html" />
+    <Content Include="JS\BoVoyage.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
