@@ -142,7 +142,7 @@
         $(document).ready(function () {
             $("form").submit(function (ev) {
                 $.ajax({
-                    url: "http://localhost:50002/api/Clients/" + $("#inputName".val(),
+                    url: "http://localhost:50002/api/Clients/" + $("#inputName").val(),
                     method: 'GET',
                     success: function (data) {
                         let ul = $('#resultat');
