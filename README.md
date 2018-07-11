@@ -20,6 +20,10 @@
  - mise en place d'éléments permettant d'obliger la saisie des champs, la saisie de valeurs positives sur les prix, de masquer l'affichage des données bancaires pour l'utilisateur
  - rendre les pages html responsive via bootstrap
  
+####Autres
+- Ajout du fichier readme.md
+- validation des pages sur W3 Validator
+
 ##Travail à faire
  - L'application ne calcule pas les âges ou les prix automatiquement
  - Divers problèmes d'alignement des div
@@ -28,6 +32,6 @@
   *ClientPost : les dropdowns du menu ne fonctionnent pas
   *ReservationDelete : le menu navbar chevauche le formulaire
  - Automatiser la saisie du champ createdAt
- - Formaliser le readme.md
+ 
   
  
