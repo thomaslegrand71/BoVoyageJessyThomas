@@ -63,7 +63,9 @@ namespace BoVoyageJessyThomas.Controllers
         /// <param name="id"></param>
         /// <param name="agence"></param>
         /// <returns></returns>
+        
         // PUT: api/Agences/5
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAgence(int id, Agence agence)
         {
@@ -123,6 +125,7 @@ namespace BoVoyageJessyThomas.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         // DELETE: api/Agences/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Agence))]
         public IHttpActionResult DeleteAgence(int id)
         {
