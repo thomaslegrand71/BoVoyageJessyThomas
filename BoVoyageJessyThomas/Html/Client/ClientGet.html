@@ -105,7 +105,7 @@
     </header>
 
     <div class="container">
-        <h2>Recherche d'un client</h2>
+        <h2>Affichage des clients</h2>
 
         <table class="table table-striped table-primary table-hover" style="margin-top:30px" ;>
 
@@ -129,7 +129,7 @@
 
    
 
-    </div>
+   
 
     
 
@@ -147,10 +147,10 @@
 
         $(document).ready(function () {
             $.get(
-                'http://localhost:50002/api/Clients', function (Destinations) {
+                'http://localhost:50002/api/Clients', function (Clients) {
 
 
-                    for (let item of Destinations) {
+                    for (let item of Clients) {
                         $("#mytab").append(`<tr>
                             <td>${item.Civilite}</td>
                             <td>${item.Nom}</td>
@@ -160,7 +160,7 @@
                             <td>${item.Telephone}</td>
                             <td>${item.DateDeNaissance}</td>
                             <td><a href="ClientPut.html" class="btn btn-warning">Modifier</a></td>
-                            <td><a href="ClientDelete.html" class="btn btn-danger">Modifier</a></td>
+                            <td><a href="ClientDelete.html" class="btn btn-danger">Supprimer</a></td>
                             </tr>`)
                     }
 
