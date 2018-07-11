@@ -115,7 +115,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="exampleInputEmail">Numéro_de_client_à_modifier</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="inputIdClient" placeholder="Saisir un identifiant..." required>
+                            <input type="hidden" class="form-control" id="inputIdClient" required>
                         </div>
                     </div>
 
@@ -198,9 +198,11 @@
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
+    <script src="../../JS/BoVoyage.js"></script>
     <script>
         $(document).ready(function () {
+
+            
 
             $("form").submit(function (ev) {
 
@@ -220,7 +222,7 @@
                     method: 'PUT',
                     data: nouveauClient,
                     success: function (data) {
-                        alert(`Client modifié avec l'ID ${data.ID}`);
+                        alert("Client modifié") //avec l'ID ${data.ID}`);
                     }
 
                 });

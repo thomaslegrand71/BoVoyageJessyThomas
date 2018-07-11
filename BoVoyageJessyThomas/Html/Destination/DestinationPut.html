@@ -111,7 +111,7 @@
                 <form class="form-horizontal" role="form">
 
                     <div class="form-group" style="margin-top:3cm">
-                        <label class="col-sm-2 control-label" for="exampleInputEmail">Numéro_de_destination_à_supprimer</label>
+                        <label class="col-sm-2 control-label" for="exampleInputEmail">Numéro_de_destination_à_modifier</label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control" id="inputIdDestination" placeholder="Saisir un identifiant..." required>
                         </div>
@@ -140,7 +140,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="exampleInputEmail">Region</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputDescription" placeholder="Saisir une région..." required>
+                            <input type="text" class="form-control" id="inputRegion" placeholder="Saisir une région..." required>
                         </div>
                     </div>
 
@@ -171,10 +171,12 @@
                 $("form").submit(function (ev) {
 
                     let nouvelleDestination = {
+                        ID: $("#inputIdDestination").val(),
                         Continent: $("#inputContinent").val(),
-                        Pays: $("#inputPays").val(),
                         Region: $("#inputRegion").val(),
+                        Pays: $("#inputPays").val(),
                         Description: $("#inputDescription").val(),
+                        
                     };
 
                     $.ajax({
@@ -182,7 +184,7 @@
                         method: 'PUT',
                         data: nouvelleDestination,
                         success: function (data) {
-                            alert(`Destination modifiée avec l'ID ${data.ID}`);
+                            alert("Destination modifiée") //avec l'ID ${data.ID}`);
                         }
 
                     });
