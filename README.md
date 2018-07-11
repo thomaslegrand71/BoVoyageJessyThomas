@@ -3,7 +3,7 @@
 
 ##Travail réalisé
 
-###Création de la partie back-office
+####Création de la partie back-office
  création des class models pour une réalisation en code first
  création de la base de données d'après le modèle des class models
  relier bdd et partie c# (connexion, EF, DBContext, Migrations)
@@ -12,7 +12,7 @@
  mise en place de la documentation via Swagger
  les controllers et leurs routes ont été testé et sont fonctionnels (testé avec des valeurs au bon format et des valeurs avec un mauvais format)
  
-###Création de la partie Front-Office
+####Création de la partie Front-Office
  création de la structure du site (1 page principale et des dossiers correspondants aux classes models, chaque dossier ayant une page pour chacune des méthodes du CRUD)
  création d'un menu de type navbar via bootstrap pour faciliter la navigation entre les pages
  création d'un formulaire pour chacune des pages afin de leur permettre de récupérer les valeurs renvoyées au server
