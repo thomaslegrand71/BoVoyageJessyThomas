@@ -12,7 +12,10 @@ namespace BoVoyageJessyThomas.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        Nom = c.String(),
+                        Nom = c.String(nullable: false),
+                        CreatedAt = c.DateTime(nullable: false, defaultValueSql: "getDate()"),
+                        Deleted = c.Boolean(nullable: false),
+                        DeletedAt = c.DateTime(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -23,6 +26,9 @@ namespace BoVoyageJessyThomas.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         AssuranceAnnulation = c.Boolean(nullable: false),
                         IDReservation = c.Int(nullable: false),
+                        CreatedAt = c.DateTime(nullable: false, defaultValueSql :"getDate()"),
+                        Deleted = c.Boolean(nullable: false),
+                        DeletedAt = c.DateTime(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Reservations", t => t.IDReservation, cascadeDelete: true)
@@ -33,10 +39,13 @@ namespace BoVoyageJessyThomas.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        NumeroCarteBancaire = c.String(),
+                        NumeroCarteBancaire = c.String(nullable: false),
                         PrixTotal = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IDClient = c.Int(nullable: false),
                         IDVoyage = c.Int(nullable: false),
+                        CreatedAt = c.DateTime(nullable: false, defaultValueSql: "getDate()"),
+                        Deleted = c.Boolean(nullable: false),
+                        DeletedAt = c.DateTime(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Clients", t => t.IDClient, cascadeDelete: true)
@@ -51,11 +60,14 @@ namespace BoVoyageJessyThomas.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         Email = c.String(),
                         Civilite = c.String(),
-                        Nom = c.String(),
-                        Prenom = c.String(),
+                        Nom = c.String(nullable: false),
+                        Prenom = c.String(nullable: false),
                         Adresse = c.String(),
                         Telephone = c.String(),
                         DateDeNaissance = c.DateTime(nullable: false),
+                        CreatedAt = c.DateTime(nullable: false, defaultValueSql: "getDate()"),
+                        Deleted = c.Boolean(nullable: false),
+                        DeletedAt = c.DateTime(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -70,6 +82,9 @@ namespace BoVoyageJessyThomas.Migrations
                         TarifToutCompris = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IDDestination = c.Int(nullable: false),
                         IDAgence = c.Int(nullable: false),
+                        CreatedAt = c.DateTime(nullable: false, defaultValueSql: "getDate()"),
+                        Deleted = c.Boolean(nullable: false),
+                        DeletedAt = c.DateTime(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Agences", t => t.IDAgence, cascadeDelete: true)
@@ -86,6 +101,9 @@ namespace BoVoyageJessyThomas.Migrations
                         Pays = c.String(),
                         Region = c.String(),
                         Description = c.String(),
+                        CreatedAt = c.DateTime(nullable: false, defaultValueSql: "getDate()"),
+                        Deleted = c.Boolean(nullable: false),
+                        DeletedAt = c.DateTime(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -97,11 +115,14 @@ namespace BoVoyageJessyThomas.Migrations
                         Reduction = c.Single(nullable: false),
                         IDReservation = c.Int(nullable: false),
                         Civilite = c.String(),
-                        Nom = c.String(),
-                        Prenom = c.String(),
+                        Nom = c.String(nullable: false),
+                        Prenom = c.String(nullable: false),
                         Adresse = c.String(),
                         Telephone = c.String(),
                         DateDeNaissance = c.DateTime(nullable: false),
+                        CreatedAt = c.DateTime(nullable: false, defaultValueSql: "getDate()"),
+                        Deleted = c.Boolean(nullable: false),
+                        DeletedAt = c.DateTime(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Reservations", t => t.IDReservation, cascadeDelete: true)

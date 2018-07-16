@@ -10,7 +10,7 @@ namespace BoVoyageJessyThomas.Data
 {
     public class ThomasEtJessyDbContext :DbContext
     {
-        public ThomasEtJessyDbContext():base ("thomasetjessy")
+        public ThomasEtJessyDbContext():base ("Jessy")
         {
         }
         public DbSet<Agence> Agences { get; set; }

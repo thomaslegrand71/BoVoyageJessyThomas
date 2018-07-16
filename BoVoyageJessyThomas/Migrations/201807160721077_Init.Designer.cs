@@ -7,13 +7,13 @@ namespace BoVoyageJessyThomas.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Personneclé : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Personneclé));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807110910037_Personneclé"; }
+            get { return "201807160721077_Init"; }
         }
         
         string IMigrationMetadata.Source
